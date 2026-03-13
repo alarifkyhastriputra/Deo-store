@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Deo MLBB Skin Store</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#eaf6ff;
+color:#111;
+margin:0;
+text-align:center;
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+background:linear-gradient(90deg,#00bfff,#008cff);
+color:white;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+/* SEARCH */
+
+input{
+padding:10px;
+width:230px;
+border-radius:8px;
+border:none;
+outline:none;
+}
+
+/* HERO RESULT */
+
+.result{
+margin-top:10px;
+}
+
+.hero{
+display:block;
+background:white;
+padding:10px;
+margin:5px auto;
+width:200px;
+color:#008cff;
+text-decoration:none;
+border-radius:10px;
+border:1px solid #cfe9ff;
+}
+
+.hero:hover{
+background:#f2f9ff;
+}
+
+/* BANNER */
+
+.banner{
+margin-top:20px;
+}
+
+.banner img{
+width:90%;
+max-width:800px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* ROLE BUTTON */
+
+.role{
+padding:14px 24px;
+margin:10px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#00bfff,#008cff);
+color:white;
+cursor:pointer;
+}
+
+.role:hover{
+background:linear-gradient(90deg,#008cff,#0066ff);
+}
+
+/* FOOTER */
+
+.footer{
+margin-top:40px;
+padding:15px;
+font-size:13px;
+color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">
+💎 Deo Store
+</div>
+
+<div>
+<input type="text" id="searchHero" placeholder="Cari hero..." onkeyup="searchHero()">
+</div>
+
+</div>
+
+<div id="result" class="result"></div>
+
+<!-- BANNER -->
+
+<div class="banner">
+<img src="PASTE_LINK_BANNER_DISINI">
+</div>
+
+<h2>Pilih Role Hero</h2>
+
+<button class="role" onclick="goRole('mage')">Mage</button>
+<button class="role" onclick="goRole('fighter')">Fighter</button>
+<button class="role" onclick="goRole('assassin')">Assassin</button>
+<button class="role" onclick="goRole('marksman')">Marksman</button>
+<button class="role" onclick="goRole('support')">Support</button>
+<button class="role" onclick="goRole('tank')">Tank</button>
+
+<script>
+
+function goRole(role){
+location.href = "role.html?role=" + role
+}
+
+let heroes = [
+
+{ name:"chou", role:"fighter" },
+{ name:"freya", role:"fighter" },
+{ name:"balmond", role:"fighter" },
+{ name:"aldous", role:"fighter" },
+{ name:"argus", role:"fighter" },
+
+{ name:"nana", role:"mage" },
+{ name:"eudora", role:"mage" },
+{ name:"kagura", role:"mage" },
+{ name:"cyclops", role:"mage" },
+{ name:"lunox", role:"mage" },
+
+{ name:"miya", role:"marksman" },
+{ name:"layla", role:"marksman" },
+{ name:"bruno", role:"marksman" },
+{ name:"beatrix", role:"marksman" },
+{ name:"hanabi", role:"marksman" },
+
+{ name:"saber", role:"assassin" },
+{ name:"fanny", role:"assassin" },
+{ name:"gusion", role:"assassin" },
+{ name:"ling", role:"assassin" },
+
+{ name:"tigreal", role:"tank" },
+{ name:"franco", role:"tank" },
+{ name:"atlas", role:"tank" },
+{ name:"akai", role:"tank" },
+
+{ name:"estes", role:"support" },
+{ name:"angela", role:"support" },
+{ name:"rafaela", role:"support" },
+{ name:"diggie", role:"support" }
+
+]
+
+function searchHero(){
+
+let input = document.getElementById("searchHero").value.toLowerCase()
+
+let result = document.getElementById("result")
+
+result.innerHTML=""
+
+heroes.forEach(hero =>{
+
+if(hero.name.includes(input) && input !== ""){
+
+result.innerHTML += `
+<a class="hero" href="${hero.role}/${hero.name}.html">
+${hero.name.toUpperCase()}
+</a>
+`
+
+}
+
+})
+
+}
+
+</script>
+
+<div class="footer">
+Cuma 1KB doang
+</div>
+
+</body>
+</html>
