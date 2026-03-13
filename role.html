@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hero List</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#111;
+color:white;
+text-align:center;
+margin:0;
+}
+
+h1{
+padding:20px;
+}
+
+.hero{
+display:block;
+width:220px;
+margin:8px auto;
+padding:12px;
+background:#222;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-size:16px;
+}
+
+.hero:hover{
+background:#444;
+}
+
+.back{
+display:inline-block;
+margin-top:20px;
+color:white;
+text-decoration:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1 id="title">Hero List</h1>
+
+<div id="hero"></div>
+
+<script>
+
+const params = new URLSearchParams(location.search)
+const role = params.get("role")
+
+let heroList = {
+
+mage:[
+"bane","julian","nana","eudora","gord","kagura","cyclops","aurora","vexana","odette",
+"zhask","pharsa","valir","change","vale","lunox","harith","lylia","cecilion","luo_yi",
+"yve","valentina","xavier","novaria","kadita","alice","esmeralda","zhuxin"
+],
+
+assassin:[
+"saber","karina","fanny","hayabusa","natalia","lancelot","helcurt","gusion","hanzo",
+"ling","aamon","joy","nolan","benedetta","harley","selena","yi_shun_shin","suyou"
+],
+
+fighter:[
+"balmond","freya","chou","sun","alpha","lapu_lapu","argus","jawhead","martis","aldous",
+"leomord","thamuz","minsitthar","badang","guinevere","terizla","xborg","dyrroth",
+"silvanna","yu_zhong","khaleed","phoveus","aulus","cici","alucard","zilong","paquito",
+"yin","arlott","roger","ruby","hilda","masha","fredrinn","lukas"
+],
+
+marksman:[
+"miya","bruno","clint","layla","moskov","irithel","hanabi","claude","granger",
+"wanwan","popol_kupa","brody","beatrix","natan","melissa","ixia","lesley","kimmy"
+],
+
+support:[
+"rafaela","estes","diggie","angela","floryn","mathilda","kaja","faramis",
+"lolita","carmilla","chip"
+],
+
+tank:[
+"tigreal","akai","franco","hylos","uranus","belerick","khufra","baxia","atlas",
+"gloo","gatotkaca","grock","barats","edith","minotaur","johnson"
+]
+
+}
+
+let container = document.getElementById("hero")
+
+if(heroList[role]){
+
+document.getElementById("title").innerText = role.toUpperCase() + " HERO"
+
+heroList[role].forEach(hero => {
+
+container.innerHTML += `
+<a class="hero" href="${role}/${hero}.html">
+${hero.toUpperCase()}
+</a>
+`
+
+})
+
+}else{
+
+container.innerHTML = "Role tidak ditemukan"
+
+}
+
+</script>
+
+<br>
+
+<a class="back" href="index.html">← Kembali ke Role</a>
+
+</body>
+</html>
