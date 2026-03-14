@@ -189,23 +189,75 @@ function greetingTime(){
 }
 greetingTime();
 
-// Hero lengkap
+// Hero lengkap semua role
 let heroes = [
-{ name:"chou", role:"fighter" },{ name:"freya", role:"fighter" },{ name:"balmond", role:"fighter" },{ name:"aldous", role:"fighter" },{ name:"argus", role:"fighter" },
-{ name:"nana", role:"mage" },{ name:"eudora", role:"mage" },{ name:"kagura", role:"mage" },{ name:"cyclops", role:"mage" },{ name:"lunox", role:"mage" },
-{ name:"miya", role:"marksman" },{ name:"layla", role:"marksman" },{ name:"bruno", role:"marksman" },{ name:"beatrix", role:"marksman" },{ name:"hanabi", role:"marksman" },
-{ name:"saber", role:"assassin" },{ name:"fanny", role:"assassin" },{ name:"gusion", role:"assassin" },{ name:"ling", role:"assassin" },
-{ name:"tigreal", role:"tank" },{ name:"franco", role:"tank" },{ name:"atlas", role:"tank" },{ name:"akai", role:"tank" },
-{ name:"estes", role:"support" },{ name:"angela", role:"support" },{ name:"rafaela", role:"support" },{ name:"diggie", role:"support" }
+  // Mage
+  "bane","julian","nana","eudora","gord","kagura","cyclops","aurora","vexana","odette",
+  "zhask","pharsa","valir","change","vale","lunox","harith","lylia","cecilion","luo_yi",
+  "yve","valentina","xavier","novaria","kadita","alice","esmeralda","zhuxin",
+  // Assassin
+  "saber","karina","fanny","hayabusa","natalia","lancelot","helcurt","gusion","hanzo",
+  "ling","aamon","joy","nolan","benedetta","harley","selena","yi_shun_shin","suyou",
+  // Fighter
+  "balmond","freya","chou","sun","alpha","lapu_lapu","argus","jawhead","martis","aldous",
+  "leomord","thamuz","minsitthar","badang","guinevere","terizla","xborg","dyrroth",
+  "silvanna","yu_zhong","khaleed","phoveus","aulus","cici","alucard","zilong","paquito",
+  "yin","arlott","roger","ruby","hilda","masha","fredrinn","lukas",
+  // Marksman
+  "miya","bruno","clint","layla","moskov","irithel","hanabi","claude","granger",
+  "wanwan","popol_kupa","brody","beatrix","natan","melissa","ixia","lesley","kimmy",
+  // Support
+  "rafaela","estes","diggie","angela","floryn","mathilda","kaja","faramis",
+  "lolita","carmilla","chip",
+  // Tank
+  "tigreal","akai","franco","hylos","uranus","belerick","khufra","baxia","atlas",
+  "gloo","gatotkaca","grock","barats","edith","minotaur","johnson"
 ];
 
+// Mapping hero ke role (untuk link)
+let heroRole = {
+  "bane":"mage","julian":"mage","nana":"mage","eudora":"mage","gord":"mage","kagura":"mage",
+  "cyclops":"mage","aurora":"mage","vexana":"mage","odette":"mage","zhask":"mage","pharsa":"mage",
+  "valir":"mage","change":"mage","vale":"mage","lunox":"mage","harith":"mage","lylia":"mage",
+  "cecilion":"mage","luo_yi":"mage","yve":"mage","valentina":"mage","xavier":"mage",
+  "novaria":"mage","kadita":"mage","alice":"mage","esmeralda":"mage","zhuxin":"mage",
+
+  "saber":"assassin","karina":"assassin","fanny":"assassin","hayabusa":"assassin","natalia":"assassin",
+  "lancelot":"assassin","helcurt":"assassin","gusion":"assassin","hanzo":"assassin","ling":"assassin",
+  "aamon":"assassin","joy":"assassin","nolan":"assassin","benedetta":"assassin","harley":"assassin",
+  "selena":"assassin","yi_shun_shin":"assassin","suyou":"assassin",
+
+  "balmond":"fighter","freya":"fighter","chou":"fighter","sun":"fighter","alpha":"fighter",
+  "lapu_lapu":"fighter","argus":"fighter","jawhead":"fighter","martis":"fighter","aldous":"fighter",
+  "leomord":"fighter","thamuz":"fighter","minsitthar":"fighter","badang":"fighter","guinevere":"fighter",
+  "terizla":"fighter","xborg":"fighter","dyrroth":"fighter","silvanna":"fighter","yu_zhong":"fighter",
+  "khaleed":"fighter","phoveus":"fighter","aulus":"fighter","cici":"fighter","alucard":"fighter",
+  "zilong":"fighter","paquito":"fighter","yin":"fighter","arlott":"fighter","roger":"fighter",
+  "ruby":"fighter","hilda":"fighter","masha":"fighter","fredrinn":"fighter","lukas":"fighter",
+
+  "miya":"marksman","bruno":"marksman","clint":"marksman","layla":"marksman","moskov":"marksman",
+  "irithel":"marksman","hanabi":"marksman","claude":"marksman","granger":"marksman","wanwan":"marksman",
+  "popol_kupa":"marksman","brody":"marksman","beatrix":"marksman","natan":"marksman","melissa":"marksman",
+  "ixia":"marksman","lesley":"marksman","kimmy":"marksman",
+
+  "rafaela":"support","estes":"support","diggie":"support","angela":"support","floryn":"support",
+  "mathilda":"support","kaja":"support","faramis":"support","lolita":"support","carmilla":"support",
+  "chip":"support",
+
+  "tigreal":"tank","akai":"tank","franco":"tank","hylos":"tank","uranus":"tank","belerick":"tank",
+  "khufra":"tank","baxia":"tank","atlas":"tank","gloo":"tank","gatotkaca":"tank","grock":"tank",
+  "barats":"tank","edith":"tank","minotaur":"tank","johnson":"tank"
+};
+
+// Fungsi search lengkap
 function searchHero(){
   let input = document.getElementById("searchHero").value.toLowerCase();
   let result = document.getElementById("result");
   result.innerHTML="";
   heroes.forEach(hero=>{
-    if(hero.name.includes(input) && input!==""){
-      result.innerHTML += `<a class="hero" href="${hero.role}/${hero.name}.html">${hero.name.toUpperCase()}</a>`;
+    if(hero.includes(input) && input!==""){
+      let role = heroRole[hero];
+      result.innerHTML += `<a class="hero" href="${role}/${hero}.html">${hero.toUpperCase()}</a>`;
     }
   });
 }
