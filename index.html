@@ -40,6 +40,29 @@ border:none;
 outline:none;
 }
 
+/* GREETING */
+
+#greeting{
+font-size:22px;
+margin-top:20px;
+font-weight:bold;
+color:#0066cc;
+}
+
+/* ANNOUNCEMENT */
+
+.announcement{
+background:white;
+width:80%;
+max-width:600px;
+margin:10px auto;
+padding:12px;
+border-radius:10px;
+border:1px solid #cfe9ff;
+color:#0066cc;
+font-weight:bold;
+}
+
 /* HERO RESULT */
 
 .result{
@@ -51,7 +74,7 @@ display:block;
 background:white;
 padding:10px;
 margin:5px auto;
-width:200px;
+width:220px;
 color:#008cff;
 text-decoration:none;
 border-radius:10px;
@@ -118,6 +141,12 @@ color:#666;
 
 </div>
 
+<div id="greeting"></div>
+
+<div class="announcement">
+Pengumuman: Skin terbaru akan segera ditambahkan!
+</div>
+
 <div id="result" class="result"></div>
 
 <!-- BANNER -->
@@ -141,8 +170,31 @@ function goRole(role){
 location.href = "role.html?role=" + role
 }
 
-let heroes = [
+function greetingTime(){
 
+let hour = new Date().getHours()
+let text = ""
+
+if(hour >= 5 && hour < 11){
+text = "🌅 Selamat Pagi"
+}
+else if(hour >= 11 && hour < 15){
+text = "☀️ Selamat Siang"
+}
+else if(hour >= 15 && hour < 18){
+text = "🌤 Selamat Sore"
+}
+else{
+text = "🌙 Selamat Malam"
+}
+
+document.getElementById("greeting").innerText = text
+
+}
+
+greetingTime()
+
+let heroes = [
 { name:"chou", role:"fighter" },
 { name:"freya", role:"fighter" },
 { name:"balmond", role:"fighter" },
@@ -175,13 +227,11 @@ let heroes = [
 { name:"angela", role:"support" },
 { name:"rafaela", role:"support" },
 { name:"diggie", role:"support" }
-
 ]
 
 function searchHero(){
 
 let input = document.getElementById("searchHero").value.toLowerCase()
-
 let result = document.getElementById("result")
 
 result.innerHTML=""
