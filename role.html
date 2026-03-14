@@ -3,41 +3,74 @@
 <head>
 <title>Hero List</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 
 body{
-font-family:Arial;
-background:#111;
-color:white;
-text-align:center;
-margin:0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 h1{
-padding:20px;
+  padding: 20px;
+  font-size: 24px;
+}
+
+/* Container flex supaya card bisa responsive */
+#hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
 }
 
 .hero{
-display:block;
-width:220px;
-margin:8px auto;
-padding:12px;
-background:#222;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-size:16px;
+  display: block;
+  width: 90%; /* Lebar fleksibel untuk HP */
+  max-width: 220px; /* Lebar maksimal di desktop */
+  margin: 8px auto;
+  padding: 12px;
+  background: #222;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background 0.3s;
 }
 
 .hero:hover{
-background:#444;
+  background: #444;
 }
 
 .back{
-display:inline-block;
-margin-top:20px;
-color:white;
-text-decoration:none;
+  display: inline-block;
+  margin-top: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Optional: ubah font lebih kecil di layar kecil */
+@media (max-width: 400px){
+  h1{
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  .hero{
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .back{
+    font-size: 14px;
+  }
 }
 
 </style>
@@ -96,22 +129,18 @@ let container = document.getElementById("hero")
 
 if(heroList[role]){
 
-document.getElementById("title").innerText = role.toUpperCase() + " HERO"
+  document.getElementById("title").innerText = role.toUpperCase() + " HERO"
 
-heroList[role].forEach(hero => {
-
-container.innerHTML += `
-<a class="hero" href="${role}/${hero}.html">
-${hero.toUpperCase()}
-</a>
-`
-
-})
+  heroList[role].forEach(hero => {
+    container.innerHTML += `
+      <a class="hero" href="${role}/${hero}.html">
+        ${hero.toUpperCase()}
+      </a>
+    `
+  })
 
 }else{
-
-container.innerHTML = "Role tidak ditemukan"
-
+  container.innerHTML = "Role tidak ditemukan"
 }
 
 </script>
